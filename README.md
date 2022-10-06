@@ -110,7 +110,7 @@ Command prompt will ask you some questions, see what to select below.
 
 ## Git Repository
 
-[https://github.com/dubcode/sd-dev.git](https://github.com/dubcode/sd-dev.git).
+[https://github.com/dubcode/sd-cms.git](https://github.com/dubcode/sd-cms.git).
 
 #### CD into project folder
 ```bash
@@ -124,7 +124,7 @@ git init
 
 #### Pull remote repository - main branch
 ```bash
-git pull https://github.com/dubcode/sd-dev.git master
+git pull https://github.com/dubcode/sd-cms.git master
 ```
 
 #### Check Git status
@@ -134,7 +134,7 @@ git status
 
 #### Connect local directory to remote repository
 ```bash
-git remote add origin https://github.com/dubcode/sd-dev.git
+git remote add origin https://github.com/dubcode/sd-cms.git
 ```
 
 #### Add files and changes to commit
