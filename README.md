@@ -33,11 +33,11 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
 - [x] Setup Nuxt config
 - [x] Setup Back End Admin
 - [x] Setup and Test API Connection
-- [ ] Setup Custom Fields and Test API Endpoints
-- [ ] Setup Layout Templates
-- [ ] Setup Components
-- [ ] Setup Pages & Categories
-- [ ] SEO & Meta
+- [x] Setup Custom Fields and Test Custom Endpoints
+- [x] Setup Layout Templates
+- [ ] Setup All Components
+- [ ] Setup All Pages & Categories
+- [ ] SEO & Meta Review
 - [ ] Setup and Test Forms
 - [ ] Browser Test
 - [ ] Performance Test
