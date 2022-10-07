@@ -96,7 +96,6 @@
   text-transform: uppercase;
   font-size: 1.4rem;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif !important;
 }
 .icons li:hover span {
   color: #333;

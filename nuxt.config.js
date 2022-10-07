@@ -32,11 +32,6 @@ export default {
         content: 'SD Waste is family paper recycling centre serving NW England, Yorkshire &amp; North Wales. We will collect your recycling and also offer confidential document destruction.'
       }
     ],
-    webfontloader: {
-      google: {
-        families: ['Montserrat:400,500,600,700', 'Open+Sans:300,400,800']
-      }
-    },
     link: [
       // add favicon
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -51,8 +46,7 @@ export default {
     baseUrl: process.env.BASE_URL || 'https://clients.theartlab.co.uk/sd-api/wp-json/wp/v2'
   },
 
-  // generate static routes
-  // make sure nuxt server is running before $ npm run generate
+  // generate static routes make sure nuxt server is running before $ npm run generate
   generate: {
     routes () {
       return axios.get('https://clients.theartlab.co.uk/sd-api/wp-json/wp/v2/posts').then((res) => {

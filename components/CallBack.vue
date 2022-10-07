@@ -52,7 +52,6 @@
   color: #146636;
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
   margin: 0;
   outline: 0;
   line-height: 30px;

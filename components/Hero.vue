@@ -55,7 +55,6 @@
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  font-family: "Montserrat", sans-serif !important;
   display: block;
 }
 .hero__excerpt p {
@@ -64,7 +63,6 @@
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif !important;
   margin: 0 0 2rem 0;
 }
 .hero__buttons .button:nth-child(1) {

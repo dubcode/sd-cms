@@ -29,7 +29,6 @@
   font-size: 2.4rem;
   line-height: 2.8rem;
   font-weight: 700;
-  font-family: "Montserrat", sans-serif !important;
 }
 .reviews-banner a {
   color: #146636;
@@ -42,7 +41,6 @@
   font-size: 1.2rem;
   line-height: 1.9rem;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif !important;
   margin: 0 auto 2rem auto;
 }
 .reviews-banner img {

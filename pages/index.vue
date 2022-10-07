@@ -58,6 +58,7 @@
       :hero-button-two-target="hero_three_button_two_target"
     />
     <Testimonial />
+    <Posts />
     <Accreditations />
   </div>
 </template>

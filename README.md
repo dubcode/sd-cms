@@ -12,6 +12,7 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
   - [API Setup](#api-setup)
   - [API Access](#api-access)
   - [WordPress Blocks](#wordpress-blocks)
+  - [Featured Images](#featured-images)
 - [Nuxt Build Procedure](#nuxt-build-procedure)
   - [Nuxt Config](#nuxt-build-procedure)
     - [Meta Tags & Open Graph](#meta-tags--open-graph)
@@ -25,6 +26,7 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
   - [Processing Data](#processing-data)
     - [Environmental Variables](#environmental-variables)
     - [SSR AsyncData Requests](#ssr-async-data-requests)
+    - [Component Level Data Requests](#component-level-data-requests)
     - [Props](#props)
   - [Deployment](#deployment)
     - [Minification](#minification)
@@ -210,6 +212,35 @@ And we need to link the CSS  in our nuxt.config.js
 css: [
     '~assets/css/blocks.min.css'
 ],
+```
+
+### `Featured Images`
+
+If you want to use WordPress featured images you will need add a new endpoint to the WordPress API. We can do this by adding the following snippet to the themes functions.php file. We can then refer to "post.fimg" in our API calls.
+
+functions.php
+
+```javascript
+// add featured image to rest api
+add_action('rest_api_init', 'register_rest_images' );
+function register_rest_images(){
+    register_rest_field( array('post'),
+        'fimg_url',
+        array(
+            'get_callback'    => 'get_rest_featured_image',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+}
+function get_rest_featured_image( $object, $field_name, $request ) {
+    if( $object['featured_media'] ){
+        $img = wp_get_attachment_image_src( $object['featured_media'], 'app-thumb' );
+        return $img[0];
+    }
+    return false;
+}
+
 ```
 
 ## Nuxt Build Procedure
@@ -562,9 +593,48 @@ export default {
 }
 ```
 
+### `Component Level Data Requests`
+
+AsyncData requests will not work at component level so for components we can use the default axios method.
+
+```javascript
+import axios from 'axios'
+
+// export data
+export default {
+
+  // data
+  data () {
+    return {
+      posts: {}
+    }
+  },
+
+  methods: {
+
+    // get posts method
+    getPosts () {
+        axios.get(process.env.baseUrl + '/posts?per_page=4')
+        .then((response) => {
+          this.posts = response.data
+        })
+        .catch((response) => {
+          console.log(response)
+        })
+    }
+  },
+
+  // created
+  created () {
+    this.getPosts()
+  },
+
+}
+```
+
 ### `Props`
 
-See below as an example of a component setup to consume page level data using props. Note props should use camel case for naming ie, "myPropName" and lowecase hyphenated when referencing the prop ie, "my-prop-name".
+See below as an example of a component setup to consume page level data using props. Note props should use camel case for naming ie, "myPropName" and lowercase hyphenated when referencing the prop ie, "my-prop-name".
 
 components/hero.vue
 
