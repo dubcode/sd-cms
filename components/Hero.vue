@@ -1,5 +1,5 @@
 <template>
-      <div class="row hero" :lazy-background="'/images/' + heroBg">
+      <div class="row hero" :lazy-background="heroBg">
         <div class="row hero__bg">
             <div class="ctr">
                 <div class="row">

@@ -18,11 +18,15 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
     - [PWA Manifest](#pwa-manifest)
     - [Generate Basic Routes](#generate-routes)
     - [Lazy Loading](#lazy-loading)
+    - [Image Compression](#image-compression)
   - [Processing Data](#processing-data)
     - [Environmental Variables](#environmental-variables)
     - [SSR AsyncData Requests](#ssr-async-data-requests)
     - [Props](#props)
   - [Deployment](#deployment)
+    - [Minification](#minification)
+    - [Post CSS](#post-css)
+    - [Generate](#generate)
   - [Components](#components)
   - [Layouts](#layouts)
   - [Pages](#pages)
@@ -39,6 +43,9 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
 - [ ] Setup All Pages & Categories
 - [ ] SEO & Meta Review
 - [ ] Setup and Test Forms
+- [x] Image Compression
+- [x] Minification
+- [x] Post CSS
 - [ ] Browser Test
 - [ ] Performance Test
 - [ ] Deploy
@@ -467,6 +474,10 @@ modules: [
 
 See the [documentation](https://www.npmjs.com/package/nuxt-lazy-load) for usage.
 
+### `Image Compression`
+
+Depending how your API serves images will depend on how you go about compression but it is important this is setup and tested before deployment. In the case of this particular project WordPress is handling the image compression so we could use a plugin such "Smush" or "EWWW" etc. But in our case our host providor has a server level image compression plugin which creates a webp copy of all images which are served by default with progressive fallbacks to the original jpeg, png etc.
+
 ### Processing Data
 
 ### `Environmental Variables`
@@ -585,6 +596,65 @@ export default {
 ```
 
 ### Deployment
+
+### `Minification`
+
+Before we deploy we need to add some minification to our build config. To do this we can add the following code which will automatically fully minify all CSS and HTML when we run the generate command.
+
+nuxt.config.js
+
+```javascript
+build: {
+    // minify
+    html: {
+      minify: {
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        minifyCSS: true,
+        minifyJS: true,
+        processConditionalComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        trimCustomFragments: true,
+        useShortDoctype: true,
+        preserveLineBreaks: false,
+        collapseWhitespace: true
+      }
+    }
+
+}
+```
+
+### `Post CSS`
+
+We can further compress our app with Post CSS which can be used to auto remove any unused CSS. Simply add the following snippet into the build config.
+
+nuxt.config.js
+
+```javascript
+build: {
+
+    // post css
+    postcss: {
+      // Add plugin names as key and arguments as value
+      // Install them before as dependencies with npm or yarn
+      plugins: {
+        // Disable a plugin by passing false as value
+        'postcss-import': {},
+        'postcss-url': {},
+        // to edit target browsers: use "browserslist" field in package.json
+        'autoprefixer': {}
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: true
+        }
+      }
+    }
+    
+}
+```
 
 ### `Generate`
 

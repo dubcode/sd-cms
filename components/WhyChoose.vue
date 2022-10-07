@@ -4,12 +4,9 @@
 
             <!-- intro -->
             <div class="row">
-                <h2>Why Choose Us</h2>
+                <h2>{{ whyTitle }}</h2>
                 <div class="flex">
-                    <div class="row">
-                        <p>We understand the importance of ensuring the security &amp; confidentiality of your brand as well as all business critical documents. We ensure all confidential documents are destroyed securely, with strict processing protocols, to give all of our customers complete confidence. Furthermore, our fleet is tracked by a well-known telematics provider and our site is covered by 24 hour monitored CCTV surveillance.</p>
-                        <p>We recycle all possible paper grades and anything that is left or that cannot be recycled due to contamination we process via our general waste agent who sort and process as Waste for Energy.</p>
-                    </div>
+                    <div class="row why__excerpt" v-html="whyExcerpt" />
                 </div>
             </div>
 
@@ -39,13 +36,13 @@
 
             <!-- button -->
             <div class="row flex">
-                <nuxt-link to="/get-a-quote/" class="button button-dark">Get A Quote</nuxt-link>
+                <nuxt-link :to="whyButtonUrl" class="button button-dark">{{ whyButtonTitle}}</nuxt-link>
             </div>
 
         </div>
     </div>
 </template>
-<style scoped>
+<style>
 .why__intro {
   background: #f7f7f7;
   padding: 4rem 0;
@@ -59,7 +56,7 @@
   font-weight: 700;
   margin: 0 0 2rem 0;
 }
-.why__intro p {
+.why__excerpt p {
   color: #146636;
   max-width: 768px;
   font-size: 1.2rem;
@@ -125,6 +122,14 @@
 <script>
 export default {
   name: 'why-choose',
+  // props
+  props: [
+    // eslint-disable-next-line vue/require-prop-types
+    'whyTitle',
+    'whyExcerpt',
+    'whyButtonTitle',
+    'whyButtonUrl'
+  ]
 }
 </script>
 

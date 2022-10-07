@@ -68,7 +68,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~assets/css/critical.css'
+    '~assets/css/critical.css',
+    '~assets/css/blocks.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -131,6 +132,26 @@ export default {
         collapseWhitespace: true
       }
     },
+
+    // post css
+    postcss: {
+      // Add plugin names as key and arguments as value
+      // Install them before as dependencies with npm or yarn
+      plugins: {
+        // Disable a plugin by passing false as value
+        'postcss-import': {},
+        'postcss-url': {},
+        // to edit target browsers: use "browserslist" field in package.json
+        'autoprefixer': {}
+      },
+      preset: {
+        // Change the postcss-preset-env settings
+        autoprefixer: {
+          grid: true
+        }
+      }
+    }
+    
   }
 
 }
