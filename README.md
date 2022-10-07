@@ -9,6 +9,9 @@ To format this readme help can be found here [Read Me Styling](https://docs.gith
 - [Project Setup](#project-setup)
 - [Repository](#git-repository)
 - [WordPress API](#wordpress-api)
+  - [API Setup](#api-setup)
+  - [API Access](#api-access)
+  - [WordPress Blocks](#wordpress-blocks)
 - [Nuxt Build Procedure](#nuxt-build-procedure)
   - [Nuxt Config](#nuxt-build-procedure)
     - [Meta Tags & Open Graph](#meta-tags--open-graph)
@@ -171,8 +174,9 @@ ACF Plugin
 ACF to REST API Plugin
 [https://wordpress.org/plugins/acf-to-rest-api/](https://wordpress.org/plugins/acf-to-rest-api/)
 
-API Auth Plugin
-[https://github.com/WP-API/Basic-Auth](https://github.com/WP-API/Basic-Auth)
+Yoast Plugin
+[plugin](https://wordpress.org/plugins/wordpress-seo/)
+[API Docs](https://developer.yoast.com/customization/apis/rest-api/)
 
 ### `API Access`
 
@@ -182,6 +186,31 @@ Development API Admin
 Development API Endpoint
 [https://your-domain.com/wp-json/wp/v2](https://your-domain.com/wp-json/wp/v2)
 
+Posts API Endpoint
+[https://your-domain.com/wp-json/wp/v2](https://your-domain.com/wp-json/wp/v2/posts)
+
+Post ID API Endpoint
+[https://your-domain.com/wp-json/wp/v2](https://your-domain.com/wp-json/wp/v2/posts/13)
+
+Pages API Endpoint
+[https://your-domain.com/wp-json/wp/v2](https://your-domain.com/wp-json/wp/v2/pages)
+
+Page ID API Endpoint
+[https://your-domain.com/wp-json/wp/v2](https://your-domain.com/wp-json/wp/v2/pages/13)
+
+### `WordPress Blocks`
+
+To consume WordPress Gutenberg Blocks we need to copy and add the Gutenberg Base CSS to our assets folder
+
+[~assets/css/blocks.min.css](https://github.com/dubcode/sd-cms/blob/master/assets/css/blocks.min.css)
+
+And we need to link the CSS  in our nuxt.config.js
+
+```javascript
+css: [
+    '~assets/css/blocks.min.css'
+],
+```
 
 ## Nuxt Build Procedure
 
@@ -476,7 +505,7 @@ See the [documentation](https://www.npmjs.com/package/nuxt-lazy-load) for usage.
 
 ### `Image Compression`
 
-Depending how your API serves images will depend on how you go about compression but it is important this is setup and tested before deployment. In the case of this particular project WordPress is handling the image compression so we could use a plugin such "Smush" or "EWWW" etc. But in our case our host providor has a server level image compression plugin which creates a webp copy of all images which are served by default with progressive fallbacks to the original jpeg, png etc.
+Depending how your API serves images will depend on how you go about compression but it is important this is setup and tested before deployment. In the case of this particular project WordPress is handling the image compression so we could use a plugin such "Smush" or "EWWW" etc. But in our case our host providor (siteground) has server level image compression which creates a webp copy of all images and then serves these by default with progressive fallbacks to the original jpeg, png etc so we can simply reference images as normal and the webp version will be served up by the server.
 
 ### Processing Data
 
