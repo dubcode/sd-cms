@@ -165,6 +165,10 @@ git push origin master
 
 ## WordPress API
 
+```diff
+- !Important: When working with the WordPress Rest API you will want to clear the cache frequently as missing or new data can cause issues. In our case I suggest using SG Optimizer to allow you to clear the cache from wp-admin
+```
+
 ### `API Setup`
 
 WordPress Theme

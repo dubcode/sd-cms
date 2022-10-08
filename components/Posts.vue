@@ -23,11 +23,13 @@
     margin: 0 0 2rem 0;
     text-align: center;
 }
-.posts ul,
-.posts li {
+.posts ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+.posts li {
+    margin: 0 0 2rem 0;
 }
 .posts li a,
 .posts li span {
@@ -76,6 +78,9 @@
             -ms-grid-columns: 1fr 1fr 1fr 1fr;
             -ms-grid-rows: 1fr;
         }
+    }
+    .posts li {
+        margin: 0;
     }
 }
 </style>

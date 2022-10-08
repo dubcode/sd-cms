@@ -6,9 +6,9 @@
                     <div class="row thumb">
                         <img :src="thumb" :alt="title" />
                     </div>
-                    <div class="row">
+                    <div class="row content">
                         <h1 v-html="title"></h1>
-                        <div class="row content" v-html="content"></div>
+                        <div class="row" v-html="content"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -18,7 +18,10 @@
         </div>
     </div>
 </template>
-<style>
+<style scoped>
+.thumb {
+    margin: 0 0 2rem 0;
+}
 /* 1200 */
 @media only screen and (min-width: 1200px) {
 

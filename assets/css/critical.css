@@ -434,6 +434,7 @@
   }
 
   /* content styles */
+  .content h1,
   .content h2 {
     font-size: 2.4rem;
     color: var(--primary);

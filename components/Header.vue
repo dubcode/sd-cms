@@ -65,17 +65,17 @@
                                     About Us
                                 </span>
                                 <ul>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/company-information/">
                                             Company Information
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/meet-the-team/">
                                             Meet The Team
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/jobs/">
                                             Jobs
                                         </nuxt-link>
@@ -87,32 +87,32 @@
                                     Recycling Services
                                 </span>
                                 <ul>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/paper-recycling/">
                                             Paper Recycling
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/cardboard-recycling/">
                                             Cardboard Recycling
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/plastic-recycling/">
                                             Plastic Recycling
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/carbon-neutral/">
                                             Carbon Neutral
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/material-handling-equipment/">
                                             Material Handling & Equipment
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/office-clearance/">
                                             Office Clearance
                                         </nuxt-link>
@@ -124,34 +124,34 @@
                                     Shredding Services
                                 </span>
                                 <ul>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/shredding-overview/">
                                             Shredding Overview
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/document-shredding/">
                                             Document Shredding
                                         </nuxt-link>
                                     </li>
-                                    <li>
+                                    <li @click="this.closeMenu">
                                         <nuxt-link to="/confidential-waste-destruction/">
                                             Confidential Waste Destruction
                                         </nuxt-link>
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            <li @click="this.closeMenu"></li><li>
                                 <nuxt-link to="/review/">
                                     Review
                                 </nuxt-link>
                             </li>
-                            <li>
+                            <li @click="this.closeMenu">
                                 <nuxt-link to="/blog/">
                                     Blog
                                 </nuxt-link>
                             </li>
-                            <li>
+                            <li @click="this.closeMenu">
                                 <nuxt-link to="/contact-us/">
                                     Contact Us
                                 </nuxt-link>
@@ -166,10 +166,18 @@
 <!-- CSS for above the fold global elements can be found in critical.css -->
 <script>
 export default {
-  name: 'masthead',
-  data () {
+    name: 'masthead',
+    data () {
         return {
             menuClose: false
+        }
+    },
+    destroyed() {
+        this.menuClose = false
+    },
+    methods: {
+        closeMenu () {
+            this.menuClose = false
         }
     }
 }

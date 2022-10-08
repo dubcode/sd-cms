@@ -1,20 +1,27 @@
 <template>
-  <div class="row posts">
-    <div class="ctr">
-        <h4>Latest News</h4>
-        <ul>
-            <li v-for="post in posts" :key="post.id">
-                <nuxt-link :to="{ path: '/blog/' + post.slug }">
-                    <img :src="post.fimg_url" :alt="post.title.rendered" />
-                    <span v-html="post.title.rendered"></span>
-                </nuxt-link>
-            </li>
-        </ul>
+  <div class="row">
+        <div class="ctr">
+            <div class="row two-col">
+                <div class="row articles">
+                  <h4>Latest News</h4>
+                  <ul>
+                      <li v-for="post in posts" :key="post.id">
+                          <nuxt-link :to="{ path: '/blog/' + post.slug }">
+                              <img :src="post.fimg_url" :alt="post.title.rendered" />
+                              <span v-html="post.title.rendered"></span>
+                          </nuxt-link>
+                      </li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <Sidebar />
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 <style scoped>
-.posts h4 {
+.articles h4 {
     color: #146636;
     text-transform: uppercase;
     font-size: 2.4rem;
@@ -23,23 +30,26 @@
     margin: 0 0 2rem 0;
     text-align: center;
 }
-.posts ul,
-.posts li {
+.articles ul,
+.articles li {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
-.posts li a,
-.posts li span {
+.articles li {
+    margin: 0 0 2rem 0;
+}
+.articles li a,
+.articles li span {
     display: block;
 }
-.posts li a {
+.articles li a {
     color: var(--primary);
     font-size: 1.2rem;
     font-weight: 600;
     text-decoration: none;
 }
-.posts li img {
+.articles li img {
     display: block;
     height: auto;
     width: 100%;
@@ -48,7 +58,7 @@
 
 /* 768 */
 @media only screen and (min-width: 768px) {
-    .posts ul {
+    .articles ul {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -56,22 +66,25 @@
         grid-auto-flow: row;
     }
     @media all and (-ms-high-contrast:none) {
-        .posts ul {
+        .articles ul {
             display: -ms-grid;
             -ms-grid-columns: 1fr 1fr;
             -ms-grid-rows: 1fr 1fr;
         }
     }
+    .articles li {
+        margin: 0;
+    }
 }
 
 /* 1200 */
 @media only screen and (min-width: 1200px) {
-    .posts ul {
+    .articles ul {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
     }
     @media all and (-ms-high-contrast:none) {
-        .posts ul {
+        .articles ul {
             display: -ms-grid;
             -ms-grid-columns: 1fr 1fr 1fr;
             -ms-grid-rows: 1fr;
