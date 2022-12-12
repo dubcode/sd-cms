@@ -728,14 +728,17 @@ build: {
 }
 ```
 
-### `Post CSS`
+### `Post CSS & Extract CSS`
 
-We can further compress our app with Post CSS which can be used to auto remove any unused CSS. Simply add the following snippet into the build config.
+We can further compress our app with Post CSS which can be used to auto remove any unused CSS and Extract CSS to remove on page CSS. Simply add the following snippet into the build config.
 
 nuxt.config.js
 
 ```javascript
 build: {
+
+    // removes on page css - need to add this to docs
+    extractCSS: true,
 
     // post css
     postcss: {
